@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include "../../Catch2/catch.hpp"
-#include "../lab3/include/Car.h"
+#include "../Car/include/Car.h"
 
 
 TEST_CASE("Car initial state")
