@@ -4,6 +4,21 @@
 const int MAX_NUMBER = 100000000;
 const int MIN_NUMBER = 2;
 
+
+std::set<int> FillSet(std::vector<bool>& vec, int upperBound)
+{
+	std::set<int> primes;
+	for (size_t i = 0; i <= upperBound ; i++)
+	{
+		if (vec[i])
+		{
+			primes.insert(i);
+		}
+	}
+
+	return primes;
+}
+
 std::set<int> GeneratePrimeNumbersSet(int upperBound)
 {
 	if (upperBound < MIN_NUMBER || upperBound > MAX_NUMBER)
@@ -15,7 +30,6 @@ std::set<int> GeneratePrimeNumbersSet(int upperBound)
 	isPrime[0] = isPrime[1] = false;
 	std::set<int> result;
 	
-	//–ешето Ёратосфена
 	for (size_t i = MIN_NUMBER; i * i <= upperBound ; i++)
 	{
 		if (isPrime[i])
@@ -27,14 +41,5 @@ std::set<int> GeneratePrimeNumbersSet(int upperBound)
 		}
 	}
 
-	//в дргую функцию
-	for (size_t i = MIN_NUMBER; i <= upperBound; i++)
-	{
-		if (isPrime[i])
-		{
-			result.insert(i);
-		}
-	}
-
-	return result;
+	return FillSet(isPrime, upperBound);
 }
