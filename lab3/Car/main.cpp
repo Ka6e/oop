@@ -1,7 +1,6 @@
 #include <iostream>
-#include "include\Car.h"
-#include "include\CarManipulation.h"
-
+#include "../Car/include/Car.h"
+#include "../Car/include/CarManipulation.h"
 
 int main()
 {

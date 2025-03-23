@@ -173,6 +173,52 @@ TEST_CASE("Check fifth gear")
 	CHECK(car.GetSpeed() == 150);
 }
 
+
+TEST_CASE("Check from 5 gear to  -1 gear")
+{
+	Car car;
+	car.TurnOnEngine();
+	car.SetGear(1);
+	car.SetSpeed(20);
+	car.SetGear(2);
+	car.SetSpeed(30);
+	car.SetGear(3);
+	car.SetSpeed(50);
+	car.SetGear(4);
+	car.SetSpeed(80);
+	car.SetGear(5);
+	car.SetSpeed(150);
+	CHECK_FALSE(car.SetSpeed(0));
+	CHECK(car.SetSpeed(80));
+	CHECK(car.GetSpeed() == 80);
+	CHECK(car.SetGear(4));
+	CHECK(car.GetGear() == 4);
+	CHECK(car.SetSpeed(50));
+	CHECK(car.GetSpeed() == 50);
+	CHECK(car.SetGear(3));
+	CHECK(car.GetGear() == 3);
+	CHECK(car.SetSpeed(30));
+	CHECK(car.GetSpeed() == 30);
+	CHECK(car.SetGear(2));
+	CHECK(car.GetGear() == 2);
+	CHECK(car.SetSpeed(20));
+	CHECK(car.GetSpeed() == 20);
+	CHECK(car.SetGear(1));
+	CHECK(car.GetGear() == 1);
+	CHECK(car.SetSpeed(15));
+	CHECK(car.GetSpeed() == 15);
+	CHECK_FALSE(car.SetGear(-1));
+	CHECK(car.GetGear() == 1);
+	CHECK(car.SetSpeed(0));
+	CHECK(car.GetSpeed() == 0);
+	CHECK(car.SetGear(-1));
+	CHECK(car.SetSpeed(15));
+	CHECK(car.GetSpeed() == 15);
+	CHECK(car.SetSpeed(20));
+	CHECK(car.GetSpeed() == 20);
+	CHECK_FALSE(car.SetSpeed(-1));
+}
+
 TEST_CASE("Check negative speed")
 {
 	Car car;

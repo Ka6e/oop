@@ -1,4 +1,5 @@
-#include "include\CarManipulation.h"
+#include "../include/CarManipulation.h"
+#include "../Car/include/Car.h"
 
 void PrintInfo(Car& car)
 {
@@ -44,7 +45,7 @@ void ConvertStringToInt(const std::string& str, int& value)
 	try
 	{
 		size_t pos;
-		value = std::stoi(str, &pos);
+		value = std::stoi(str,&pos);
 
 		if (pos != str.length())
 		{
@@ -57,15 +58,14 @@ void ConvertStringToInt(const std::string& str, int& value)
 	}
 }
 
-void SetCarSpeed(Car& car, std::string& str)
+void SetSpeed(Car& car, std::string& str)
 {
 	int speed;
 	ConvertStringToInt(str, speed);
 	if (!car.SetSpeed(speed))
 	{
-		std::cout << "Unable to set gear to " << speed << std::endl;
+		std::cout << "Unable to set speed to " << speed << std::endl;
 	}
-
 }
 
 void SetGear(Car& car, std::string& str)
@@ -97,15 +97,13 @@ void WorkingWithCar()
 			TurnOffEngine(car);
 			break;
 		case State::SET_SPEED:
-			SetCarSpeed(car, value);
+			SetSpeed(car, value);
 			break;
 		case State::SET_GEAR:
 			SetGear(car, value);
 			break;
 		case State::INFO:
 			PrintInfo(car);
-			break;
-		case State::QUIT:
 			break;
 		case State::UNKNOWN:
 			std::cout << "Unknown command" << std::endl;

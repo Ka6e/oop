@@ -1,4 +1,4 @@
-#include "include\StringOperations.h"
+#include "../Car/include/StringOperations.h"
 
 State CompareStrings(std::string& str1)
 {
@@ -21,10 +21,6 @@ State CompareStrings(std::string& str1)
 	else if (str1 == INFO)
 	{
 		return State::INFO;
-	}
-	else if (str1 == QUIT)
-	{
-		return State::QUIT;
 	}
 	return State::UNKNOWN;
 }

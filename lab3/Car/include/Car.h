@@ -22,6 +22,8 @@ public:
 private:
 	void SetDirection();
 	CarMovementState direction = CarMovementState::STAY;
+	bool IsValidSpeed(int speed);
+	bool IsValidGear(int gear);
 	bool isTurnedOn = false;
 	int speed = 0;
 	int gear = 0;
