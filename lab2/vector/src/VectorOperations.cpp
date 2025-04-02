@@ -1,4 +1,4 @@
-#include "VectorOperations.h"
+#include "../../vector/include/VectorOperations.h"
 
 DoubleVector ReadNumbers()
 {

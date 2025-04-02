@@ -136,10 +136,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\HTMLDecode\DecodeOperations.cpp" />
-    <ClCompile Include="..\PrimeNumbers\PrimeNumbersOperations.cpp" />
-    <ClCompile Include="..\vector\VectorOperations.cpp" />
-    <ClCompile Include="Testing.cpp" />
+    <ClCompile Include="..\vector\src\VectorOperations.cpp" />
+    <ClCompile Include="VectorTesting.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

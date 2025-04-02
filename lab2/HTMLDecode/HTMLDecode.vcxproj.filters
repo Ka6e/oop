@@ -18,12 +18,12 @@
     <ClCompile Include="HTMLDecode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DecodeOperations.cpp">
+    <ClCompile Include="src\DecodeOperations.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DecodeOperations.h">
+    <ClInclude Include="include\DecodeOperations.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

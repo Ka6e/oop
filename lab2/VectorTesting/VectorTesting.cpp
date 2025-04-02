@@ -1,9 +1,7 @@
 #define CATCH_CONFIG_MAIN
-#include "catch.hpp"
-#include "../vector/VectorOperations.h"
-#include "../HTMLDecode/DecodeOperations.h"
-#include "../PrimeNumbers/PrimeNumbersOperations.h"
-/*
+#include "../../Catch2/catch.hpp"
+#include "../vector/include/VectorOperations.h"
+
 TEST_CASE("ReadNumbers корректно читает ввод", "[ReadNumbers]")
 {
     SECTION("Correct input") 
@@ -73,7 +71,7 @@ TEST_CASE("ProcessNumbers корректно добавляет среднее положительных чисел", "[Pr
     }
 }
 
-/*TEST_CASE("Sort корректно сортирует числа", "[Sort]")
+TEST_CASE("Sort корректно сортирует числа", "[Sort]")
 {
     SECTION("Correct input")
     {
@@ -105,50 +103,3 @@ TEST_CASE("ProcessNumbers корректно добавляет среднее положительных чисел", "[Pr
         CHECK(vec5 == expected5);
     }
 }
-*/
-
-TEST_CASE("HtmlDecode Testing", "[HtmlDecode]")
-{
-    std::string line1 = "Hello & World";
-    std::string expected1 = "Hello & World";
-
-    std::string line2 = "Cat &lt;says&gt; &quot;Meow&quot;.";
-    std::string expected2 = "Cat <says> \"Meow\".";
-
-    std::string line3 = "";
-    std::string expected3 = "";
-
-    std::string line4 = "Test &unknown; and &";
-    std::string expected4 = "Test &unknown; and &";
-
-    std::string line5 = "M&amp;M&apos;s";
-    std::string expected5 = "M&M's";
-
-    std::string line6 = "&quot;&apos;&lt;&amp;&gt;&apos;&quot;";
-    std::string expected6 = "\"\'<&>\'\"";
-
-    CHECK(HtmlDecode(line1) == expected1);
-    CHECK(HtmlDecode(line2) == expected2);
-    CHECK(HtmlDecode(line3) == expected3);
-    CHECK(HtmlDecode(line4) == expected4);
-    CHECK(HtmlDecode(line5) == expected5);
-    CHECK(HtmlDecode(line6) == expected6);
-}
-/*
-TEST_CASE("PrimeNumbers", "[GeneratePrimeNumbersSet]")
-{
-    CHECK_THROWS_AS(GeneratePrimeNumbersSet(1), std::invalid_argument);
-    CHECK_THROWS_AS(GeneratePrimeNumbersSet(100000001), std::invalid_argument);
-    
-    auto prime = GeneratePrimeNumbersSet(30);
-    CHECK(prime.size() == 10);
-
-    auto prime1 = GeneratePrimeNumbersSet(100000000);
-    CHECK(prime1.size() == 5761455);
-
-    CHECK_THROWS_AS(GeneratePrimeNumbersSet(-1), std::invalid_argument);
-
-    auto prime2 = GeneratePrimeNumbersSet(2);
-    CHECK(prime2.size() == 1);
-}
-*/

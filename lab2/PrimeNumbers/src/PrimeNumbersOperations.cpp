@@ -1,4 +1,4 @@
-#include "PrimeNumbersOperations.h"
+#include "../../PrimeNumbers/include/PrimeNumbersOperations.h"
 #include <stdexcept>
 
 const int MAX_NUMBER = 100000000;

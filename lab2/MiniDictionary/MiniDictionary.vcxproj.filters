@@ -18,13 +18,16 @@
     <ClCompile Include="MiniDictionary.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="MiniDictionaryOperations.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClCompile Include="src\MiniDictionaryOperations.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\MiniDictionaryOperations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

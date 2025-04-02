@@ -25,6 +25,6 @@ private:
 	bool IsValidSpeed(int speed);
 	bool IsValidGear(int gear);
 	bool isTurnedOn = false;
-	int speed = 0;
-	int gear = 0;
+	int m_speed = 0;
+	int m_gear = 0;
 };

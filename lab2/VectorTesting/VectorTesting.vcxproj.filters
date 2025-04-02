@@ -15,16 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Testing.cpp">
+    <ClCompile Include="VectorTesting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\vector\VectorOperations.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\HTMLDecode\DecodeOperations.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\PrimeNumbers\PrimeNumbersOperations.cpp">
+    <ClCompile Include="..\vector\src\VectorOperations.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

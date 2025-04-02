@@ -1,5 +1,6 @@
 #include "../include/CarManipulation.h"
-#include "../Car/include/Car.h"
+#include <iostream>
+#include <algorithm>
 
 void PrintInfo(Car& car)
 {
@@ -78,6 +79,7 @@ void SetGear(Car& car, std::string& str)
 	}
 }
 
+//вынести в отдельный класс
 void WorkingWithCar()
 {
 	Car car;
