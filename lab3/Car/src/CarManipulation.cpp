@@ -79,7 +79,6 @@ void SetGear(Car& car, std::string& str)
 	}
 }
 
-//вынести в отдельный класс
 void WorkingWithCar()
 {
 	Car car;

@@ -3,8 +3,14 @@
 #include <stdexcept>
 #include <iostream>
 #include <unordered_map>
-#include <string>
 #include <sstream>
 
+
+struct  Expression
+{
+	char operation;
+	std::vector<int> args;
+};
+
 int Calculate(char ch, std::vector<int>& vec);
-void RunPolishNotation();
+int Evaluate();

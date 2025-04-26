@@ -384,3 +384,23 @@ TEST_CASE("Chech set the speed with the engine off")
 	}
 
 }
+
+TEST_CASE("Check direction")
+{
+	GIVEN("Car with reverse gear")
+	{
+		Car car;
+		car.TurnOnEngine();
+		car.SetGear(-1);
+		car.SetSpeed(15);
+		WHEN("Car set to the neatrual gaear")
+		{
+			car.SetGear(0);
+			THEN("Car is moving backward")
+			{
+				CHECK(car.SetSpeed(9));
+				CHECK(car.GetDirection() == CarMovementState::BACKWARD);
+			}
+		}
+	}
+}

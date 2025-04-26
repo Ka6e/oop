@@ -21,10 +21,10 @@ public:
 		
 private:
 	void SetDirection();
-	CarMovementState direction = CarMovementState::STAY;
+	CarMovementState m_direction = CarMovementState::STAY;
 	bool IsValidSpeed(int speed);
 	bool IsValidGear(int gear);
-	bool isTurnedOn = false;
+	bool m_isTurnedOn = false;
 	int m_speed = 0;
 	int m_gear = 0;
 };

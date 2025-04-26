@@ -2,6 +2,12 @@
 
 int main()
 {
-	RunPolishNotation();
-	return 0;
+	try
+	{
+		std::cout << Evaluate() << std::endl;
+	}
+	catch (const std::exception& ex)
+	{
+		std::cout << ex.what() << std::endl;
+	}
 }

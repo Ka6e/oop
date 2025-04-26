@@ -1,10 +1,18 @@
-// Calculator.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include "../Calculator/include/CalculatorManager.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	try
+	{
+		CalculatorManager handler;
+		handler.RunCalculator();
+	}
+	catch (const std::exception& ex)
+	{
+		std::cerr << ex.what() << std::endl;
+		return 1;
+	}
+	return 0;
 }
 

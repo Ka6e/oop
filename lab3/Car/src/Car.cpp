@@ -1,21 +1,21 @@
 #include "../include/Car.h"
 #include <iostream>
+#include <map>
 
-const int MIN_SPEED = 0;
-const int MAX_BACKWARD_SPEED = 20;
-const int MAX_FIRST_GEAR_SPEED = 30;
-const int MIN_SECOND_GEAR_SPEED = 20;
-const int MAX_SECOND_GEAR_SPEED = 50;
-const int MIN_THIRD_GEAR_SPEED = 30;
-const int MAX_THIRD_GEAR_SPEED = 60;
-const int MIN_FOURTH_GEAR_SPEED = 40;
-const int MAX_FOURTH_GEAR_SPEED = 90;
-const int MIN_FIFTH_GEAR_SPEED = 50;
-const int MAX_FIFTH_GEAR_SPEED = 150;
+std::map<int, std::pair<int, int>> speedRange =
+{
+	{-1, {0, 20}},
+	{0, {0, 150}},
+	{1, {0, 30}},
+	{2, {20, 50}},
+	{3, {30, 60}},
+	{4, {40, 90}},
+	{5, {50, 150}},
+};
 
 bool Car::TurnOnEngine()
 {
-	this->isTurnedOn = true;
+	m_isTurnedOn = true;
 	std::cout << "Engine is on" << std::endl;
 	return true;
 }
@@ -26,7 +26,7 @@ bool Car::TurnOffEngine()
 	{
 		return false;
 	}
-	this->isTurnedOn = false;
+	m_isTurnedOn = false;
 	std::cout << "Engine is off" << std::endl;
 	return true;
 }
@@ -35,17 +35,17 @@ void Car::SetDirection()
 {
 	if (m_speed == 0)
 	{
-		this->direction = CarMovementState::STAY;
+		m_direction = CarMovementState::STAY;
 		return;
 	}
 	if (m_gear == -1)
 	{
-		this->direction = CarMovementState::BACKWARD;
+		m_direction = CarMovementState::BACKWARD;
 		return;
 	}
 	if (m_gear > 0)
 	{
-		this->direction = CarMovementState::FORWARD;
+		m_direction = CarMovementState::FORWARD;
 	}
 }
 
@@ -53,7 +53,7 @@ void Car::SetDirection()
 
 bool Car::SetGear(int gear)
 {
-	//не здесь проверяется
+
 	bool checkGear = IsValidGear(gear);
 
 	if (!checkGear)
@@ -81,32 +81,32 @@ bool Car::SetSpeed(int speed)
 
 bool Car::IsTurnedOn()
 {
-	return this->isTurnedOn;
+	return m_isTurnedOn;
 }
 
 CarMovementState Car::GetDirection()
 {
-	return this->direction;
+	return m_direction;
 }
 
 int Car::GetSpeed()  
 {  
-return m_speed;  
+	return m_speed;  
 }
 
 int Car::GetGear()
 {
 	return m_gear;
 }
-//структура или map для проверки
+
 bool Car::IsValidSpeed(int speed)
 {
-	if (!this->isTurnedOn)
+	if (!m_isTurnedOn)
 	{
 		std::cout << "Cannot set speed while engine is off" << std::endl;
 		return false;
 	}
-	if (speed < MIN_SPEED)
+	if (speed < 0)
 	{
 		std::cout << "Speed cannot be negative" << std::endl;
 		return false;
@@ -116,28 +116,29 @@ bool Car::IsValidSpeed(int speed)
 		std::cout << "Cannot accelerate on neutral" << std::endl;
 		return false;
 	}
-	if (m_gear == -1 && (speed < MIN_SPEED || speed > MAX_BACKWARD_SPEED) ||
-		m_gear == 1 && (speed < MIN_SPEED || speed > MAX_FIRST_GEAR_SPEED) ||
-		m_gear == 2 && (speed < MIN_SECOND_GEAR_SPEED || speed > MAX_SECOND_GEAR_SPEED) ||
-		m_gear == 3 && (speed < MIN_THIRD_GEAR_SPEED || speed > MAX_THIRD_GEAR_SPEED) ||
-		m_gear == 4 && (speed < MIN_FOURTH_GEAR_SPEED || speed > MAX_FOURTH_GEAR_SPEED) ||
-		m_gear == 5 && (speed < MIN_FIFTH_GEAR_SPEED || speed > MAX_FIFTH_GEAR_SPEED))
+	if (speedRange.find(m_gear) != speedRange.end())
 	{
-		std::cout << "Speed is out of gear range" << std::endl;
-		return false;
+		auto speedRangePair = speedRange.at(m_gear);
+		int minSpeed = speedRangePair.first;
+		int maxSpeed = speedRangePair.second;
+		if (speed < minSpeed || speed > maxSpeed)
+		{
+			std::cout << "Speed is out of gear range" << std::endl;
+			return false;
+		}
 	}
 	return true;
 }
 
 bool Car::IsValidGear(int gear)
 {
-	if (!this->isTurnedOn)
+	if (!m_isTurnedOn)
 	{
 		std::cout << "Cannot set gear while engine is off" << std::endl;
 		return false;
 	}
-	if (gear < 0 && this->direction == CarMovementState::FORWARD ||
-		gear > 0 && this->direction == CarMovementState::BACKWARD)
+	if (gear < 0 && m_direction == CarMovementState::FORWARD ||
+		gear > 0 && m_direction == CarMovementState::BACKWARD)
 	{
 		return false;
 	}
@@ -152,17 +153,16 @@ bool Car::IsValidGear(int gear)
 		std::cout << "Cannot reverse while moving" << std::endl;
 		return false;
 	}
-
-	if (gear == -1 && (m_speed < MIN_SPEED || m_speed > MAX_BACKWARD_SPEED) || 
-		gear == 1 && (m_speed < MIN_SPEED || m_speed > MAX_FIRST_GEAR_SPEED) ||
-		gear == 2 && (m_speed < MIN_SECOND_GEAR_SPEED || m_speed > MAX_SECOND_GEAR_SPEED) ||
-		gear == 3 && (m_speed < MIN_THIRD_GEAR_SPEED || m_speed > MAX_THIRD_GEAR_SPEED) ||
-		gear == 4 && (m_speed < MIN_FOURTH_GEAR_SPEED || m_speed > MAX_FOURTH_GEAR_SPEED) ||
-		gear == 5 && (m_speed < MIN_FIFTH_GEAR_SPEED || m_speed > MAX_FIFTH_GEAR_SPEED)
-		)
+	if (speedRange.find(m_gear) != speedRange.end())
 	{
-		std::cout << "Unsuitable current speed" << std::endl;
-		return false;
+		auto speedRangePair = speedRange.at(gear);
+		int minSpeed = speedRangePair.first;
+		int maxSpeed = speedRangePair.second;
+		if (m_speed < minSpeed || m_speed > maxSpeed)
+		{
+			std::cout << "Unsuitable current speed" << std::endl;
+			return false;
+		}
 	}
 	return true;
 }
