@@ -18,46 +18,73 @@
     <ClCompile Include="lab4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\CBody.cpp">
+    <ClCompile Include="src\CLineSegment.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\CSphere.cpp">
+    <ClCompile Include="src\CTriangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\CCylinder.cpp">
+    <ClCompile Include="src\CRectangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\CCone.cpp">
+    <ClCompile Include="src\CCircle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\CParallelepiped.cpp">
+    <ClCompile Include="src\CCanvas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\CCompound.cpp">
+    <ClCompile Include="include\ShapeManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ShapeFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WindowManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\CBody.h">
+    <ClInclude Include="include\IShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\CSphere.h">
+    <ClInclude Include="include\CLineSegment.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\CCylinder.h">
+    <ClInclude Include="include\CPoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\CCone.h">
+    <ClInclude Include="include\ISolidShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\CParallelepiped.h">
+    <ClInclude Include="include\CCircle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\CCompound.h">
+    <ClInclude Include="include\CRectangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\CSolidBody.h">
+    <ClInclude Include="include\CTriangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\ICanvasDrawable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ICanvas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCanvas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ShapeManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ShapeFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WindowManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="data.txt" />
   </ItemGroup>
 </Project>

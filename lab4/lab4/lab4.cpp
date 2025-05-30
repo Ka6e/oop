@@ -1,10 +1,34 @@
-// lab4.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
+#include "include/ShapeManager.h"
+#include "include/CCanvas.h"
+#include <string>
 #include <iostream>
+#include "include/WindowManager.h"
 
-int main()
+int main(int argc, char** argv)
 {
-    std::cout << "Hello World!\n";
+	try
+	{
+		ShapeManager manager;
+
+		if (argc > 1)
+		{
+			manager.ReadShape(argv[1]);
+		}
+		else
+		{
+			manager.ReadShape(std::cin);
+		}
+		manager.PrintMaxAreaShape();
+		manager.PrintMinPerimeterShape();
+		
+		WindowManager window(800, 600, "Geometric shapes");
+		window.Run(manager);
+	}
+	catch (const std::exception& ex)
+	{
+		std::cerr << ex.what() << std::endl;
+		return 1;
+	}
+	return 0;
 }
 
